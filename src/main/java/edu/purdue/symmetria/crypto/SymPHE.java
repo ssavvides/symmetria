@@ -19,8 +19,6 @@ import java.util.Arrays;
 
 public abstract class SymPHE extends CryptoScheme {
 
-    static final boolean ENABLE_RANDOM = true;
-
     static final CipherType DEFAULT_CIPHER_TYPE = CipherType.RANGE;
 
     // arithmetic modulo
@@ -82,9 +80,6 @@ public abstract class SymPHE extends CryptoScheme {
      * number generator.
      */
     public long getRandNum(long id, long modulo) {
-        if (!ENABLE_RANDOM)
-            return 1;
-
         byte[] b = new byte[0];
         try {
             b = aesBlockCipher.doFinal(String.valueOf(id).getBytes());

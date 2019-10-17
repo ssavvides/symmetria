@@ -1,12 +1,12 @@
 
-<img src="resources/logo/logo-name.png" alt="Symmetria" width="500">
+<img src="resources/logo/logo-name.png" alt="Symmetria" width="600">
 
-The _symmetria_ system introduces two symmetric encryption schemes namely 
-symAHE (symmetric Additive Homomorphic Encryption) and symMHE (symmetric
-Multiplicative Homomorphic Encryption) that allow additions and multiplications
-over encrypted data.
+The _symmetria_ system introduces two _symmetric encryption_ schemes namely
+**symAHE (symmetric Additive Homomorphic Encryption)** and
+**symMHE (symmetricMultiplicative Homomorphic Encryption)**
+that allow additions and multiplications over encrypted data.
 
-These schemes can replace previous asymmetric PHE schemes such as Paillier or ElGamal. _symmetria_ leads 
+These schemes can replace previous asymmetric PHE schemes such as Paillier or ElGamal. _symmetria_ leads
 to smaller ciphertext size overheads and faster execution times for homomorphic operations.
 
 ## Installation
@@ -48,5 +48,5 @@ java -cp target/symmetria-0.1-SNAPSHOT.jar edu.purdue.symmetria.evaluate.MHESche
 ```
 
 ## Contact
-If you want to know more about our project or have questions, please contact 
+If you want to know more about our project or have questions, please contact
 Savvas <savvas@purdue.edu>.

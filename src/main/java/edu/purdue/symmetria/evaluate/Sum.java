@@ -11,7 +11,7 @@ import java.math.BigInteger;
 
 
 public class Sum {
-    private static int ITERATIONS = 1_000;
+    private static int ITERATIONS = 10_000;
 
 
     static void timeSum() {
