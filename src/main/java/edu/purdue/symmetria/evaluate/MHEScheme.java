@@ -2,18 +2,17 @@ package edu.purdue.symmetria.evaluate;
 
 import edu.purdue.symmetria.crypto.ElGamal;
 import edu.purdue.symmetria.crypto.SymMHE;
-import edu.purdue.symmetria.crypto.SymPHE;
 import edu.purdue.symmetria.crypto.cipher.ElGamalCipher;
 import edu.purdue.symmetria.crypto.cipher.SymCipher;
 import edu.purdue.symmetria.utils.MathUtils;
 
 public class MHEScheme {
 
-    private static final int WARMUP = 2;
-    private static final int ITERATIONS = 20 + WARMUP;
+    private static final int WARMUP = 10;
+    private static final int ITERATIONS = 100 + WARMUP;
 
-    public static SymMHE symMHE = new SymMHE();
-    public static ElGamal elgamal = new ElGamal();
+    private static SymMHE symMHE = new SymMHE();
+    private static ElGamal elgamal = new ElGamal();
 
     public enum MHEOp {
         ENCRYPT, DECRYPT, MULTIPLY, MULTIPLY_PLAINTEXT, DIVIDE, POW, INVERSE

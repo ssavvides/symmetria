@@ -14,7 +14,7 @@ public class Sum {
     private static int ITERATIONS = 10_000;
 
 
-    static void timeSum() {
+    private static void timeSum() {
 
         // print headers
         System.out.println("Count\tSelectivity"

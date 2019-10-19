@@ -2,7 +2,6 @@ package edu.purdue.symmetria.crypto.cipher;
 
 import edu.purdue.symmetria.utils.MathUtils;
 
-import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +35,7 @@ public class RangeSymCipher extends SymCipher {
         // `ids` index to number of consecutive ids.
         private Map<Integer, Integer> ranges;
 
-        public CardId(long offset) {
+        CardId(long offset) {
             this.size = 0;
             this.total = 1;
             this.offset = offset;
@@ -201,7 +200,7 @@ public class RangeSymCipher extends SymCipher {
             return index;
         }
 
-        public long[] toArray() {
+        long[] toArray() {
             long[] array = new long[this.total];
             int index = 0;
 
@@ -218,7 +217,7 @@ public class RangeSymCipher extends SymCipher {
             return array;
         }
 
-        public int byteSize() {
+        int byteSize() {
             int bytes = Long.BYTES + Long.BYTES + Integer.BYTES + Integer.BYTES;
             bytes += size * Integer.BYTES;
             if (ranges != null)
@@ -246,18 +245,14 @@ public class RangeSymCipher extends SymCipher {
         this.size = 1;
     }
 
-    public RangeSymCipher(ByteBuffer bb) {
-        throw new RuntimeException("Unimplemented");
-    }
-
-    void addIds(Long card, CardId cardId) {
+    private void addIds(Long card, CardId cardId) {
         if (!this.ids.containsKey(card)) {
             this.ids.put(card, cardId);
         } else
             this.ids.get(card).add(cardId);
     }
 
-    void addIds(RangeSymCipher other) {
+    private void addIds(RangeSymCipher other) {
         if (other.ids == null)
             return;
         if (this.ids == null) {
@@ -270,7 +265,7 @@ public class RangeSymCipher extends SymCipher {
             addIds(entry.getKey(), entry.getValue());
     }
 
-    void multiplyIds(long multiplier, long modulo) {
+    private void multiplyIds(long multiplier, long modulo) {
         if (multiplier == 0) {
             this.ids = null;
             return;

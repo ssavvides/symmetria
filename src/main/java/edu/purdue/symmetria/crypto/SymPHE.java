@@ -1,11 +1,9 @@
 package edu.purdue.symmetria.crypto;
 
-
+import edu.purdue.symmetria.crypto.cipher.ArraySymCipher;
 import edu.purdue.symmetria.crypto.cipher.RangeSymCipher;
 import edu.purdue.symmetria.crypto.cipher.SymCipher;
 import edu.purdue.symmetria.crypto.cipher.SymCipher.CipherType;
-import edu.purdue.symmetria.utils.ByteUtils;
-import edu.purdue.symmetria.utils.MathUtils;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -19,7 +17,7 @@ import java.util.Arrays;
 
 public abstract class SymPHE extends CryptoScheme {
 
-    static final CipherType DEFAULT_CIPHER_TYPE = CipherType.RANGE;
+    static final CipherType DEFAULT_CIPHER_TYPE = CipherType.ARRAY;
 
     // arithmetic modulo
     public long modulo;
@@ -50,7 +48,9 @@ public abstract class SymPHE extends CryptoScheme {
      */
     static SymCipher generateCipher(CipherType cipherType, long value, long id) {
         SymCipher cipher;
-        if (cipherType == CipherType.RANGE)
+        if (cipherType == CipherType.ARRAY)
+            cipher = new ArraySymCipher(value, id);
+        else if (cipherType == CipherType.RANGE)
             cipher = new RangeSymCipher(value, id);
         else
             throw new RuntimeException("Invalid cipher type");
@@ -80,13 +80,14 @@ public abstract class SymPHE extends CryptoScheme {
      * number generator.
      */
     public long getRandNum(long id, long modulo) {
-        byte[] b = new byte[0];
-        try {
-            b = aesBlockCipher.doFinal(String.valueOf(id).getBytes());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return MathUtils.mod(ByteUtils.bytesToLong(b), modulo);
+        return 1;
+//        byte[] b = new byte[0];
+//        try {
+//            b = aesBlockCipher.doFinal(String.valueOf(id).getBytes());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return MathUtils.mod(ByteUtils.bytesToLong(b), modulo);
     }
 
 

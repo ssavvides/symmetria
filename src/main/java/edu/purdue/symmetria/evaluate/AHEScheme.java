@@ -2,7 +2,6 @@ package edu.purdue.symmetria.evaluate;
 
 import edu.purdue.symmetria.crypto.Paillier;
 import edu.purdue.symmetria.crypto.SymAHE;
-import edu.purdue.symmetria.crypto.SymPHE;
 import edu.purdue.symmetria.crypto.cipher.SymCipher;
 import edu.purdue.symmetria.utils.MathUtils;
 
@@ -10,17 +9,17 @@ import java.math.BigInteger;
 
 public class AHEScheme {
 
-    private static final int WARMUP = 2;
-    private static final int ITERATIONS = 20 + WARMUP;
+    private static final int WARMUP = 10;
+    private static final int ITERATIONS = 100 + WARMUP;
 
-    public static SymAHE symAHE = new SymAHE();
-    public static Paillier paillier = new Paillier();
+    private static SymAHE symAHE = new SymAHE();
+    private static Paillier paillier = new Paillier();
 
     public enum AHEOp {
         ENCRYPT, DECRYPT, ADD, ADD_PLAINTEXT, SUBTRACT, MULTIPLY, NEGATE
     }
 
-    public static void timeOp(AHEOp op) {
+    private static void timeOp(AHEOp op) {
 
         System.out.println("\nEvaluating " + op.name() + " ...");
 

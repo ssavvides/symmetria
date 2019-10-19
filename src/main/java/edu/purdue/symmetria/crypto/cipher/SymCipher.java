@@ -4,10 +4,13 @@ import edu.purdue.symmetria.utils.MathUtils;
 
 
 public abstract class SymCipher {
-    private long value;
+     long value;
 
     public enum CipherType {
-        // Store ids compacting ranges
+        // Store ids using array as a backbone
+        ARRAY,
+
+        // Store ids using an inner class to compact ranges
         RANGE
     }
 

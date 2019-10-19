@@ -1,6 +1,5 @@
 package edu.purdue.symmetria.crypto;
 
-
 import edu.purdue.symmetria.crypto.cipher.SymCipher;
 import edu.purdue.symmetria.crypto.cipher.SymCipher.CipherType;
 import edu.purdue.symmetria.utils.FileUtils;
