@@ -2,8 +2,8 @@
 <img src="resources/logo/logo-name.png" alt="Symmetria" width="600">
 
 The _symmetria_ system introduces two _symmetric encryption_ schemes namely
-**symAHE (symmetric Additive Homomorphic Encryption)** and
-**symMHE (symmetricMultiplicative Homomorphic Encryption)**
+**SAHE (symmetric Additive Homomorphic Encryption)** and
+**SMHE (symmetricMultiplicative Homomorphic Encryption)**
 that allow additions and multiplications over encrypted data.
 
 These schemes can replace previous asymmetric PHE schemes such as Paillier or ElGamal. _symmetria_ leads
@@ -35,13 +35,13 @@ java -cp target/symmetria-0.1-SNAPSHOT.jar CLASS_FULL_PATH
 ```
 
 ## Examples
-To compare SymAHE to Paillier you can run:
+To compare SAHE to Paillier you can run:
 
 ```bash
 java -cp target/symmetria-0.1-SNAPSHOT.jar edu.purdue.symmetria.evaluate.AHEScheme
 ```
 
-and to compare SymMHE to ElGamal:
+and to compare SMHE to ElGamal:
 
 ```bash
 java -cp target/symmetria-0.1-SNAPSHOT.jar edu.purdue.symmetria.evaluate.MHEScheme
