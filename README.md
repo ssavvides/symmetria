@@ -3,7 +3,7 @@
 
 The _symmetria_ system introduces two _symmetric encryption_ schemes namely
 **SAHE (symmetric Additive Homomorphic Encryption)** and
-**SMHE (symmetricMultiplicative Homomorphic Encryption)**
+**SMHE (symmetric Multiplicative Homomorphic Encryption)**
 that allow additions and multiplications over encrypted data.
 
 These schemes can replace previous asymmetric PHE schemes such as Paillier or ElGamal. _symmetria_ leads
