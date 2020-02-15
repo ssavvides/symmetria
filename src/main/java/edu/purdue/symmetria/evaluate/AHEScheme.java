@@ -10,7 +10,7 @@ import java.math.BigInteger;
 public class AHEScheme {
 
     private static final int WARMUP = 10;
-    private static final int ITERATIONS = 100 + WARMUP;
+    private static final int ITERATIONS = 100;
 
     private static SymAHE symAHE = new SymAHE();
     private static Paillier paillier = new Paillier();
@@ -26,7 +26,7 @@ public class AHEScheme {
         long startTime;
         long symAHETime = 0;
         long paillierTime = 0;
-        for (int i = 0; i < ITERATIONS; i++) {
+        for (int i = 0; i < ITERATIONS + WARMUP; i++) {
             long m1 = MathUtils.randLong(1_000_000);
             long m2 = MathUtils.randLong(1_000_000);
 
@@ -126,8 +126,8 @@ public class AHEScheme {
             }
         }
 
-        symAHETime = symAHETime / (ITERATIONS - WARMUP);
-        paillierTime = paillierTime / (ITERATIONS - WARMUP);
+        symAHETime = symAHETime / ITERATIONS ;
+        paillierTime = paillierTime / ITERATIONS ;
 
         System.out.println("SymAHE\tPaillier");
         System.out.println(symAHETime + "\t" + paillierTime);

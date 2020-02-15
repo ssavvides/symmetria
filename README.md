@@ -47,6 +47,12 @@ and to compare SMHE to ElGamal:
 java -cp target/symmetria-0.1-SNAPSHOT.jar edu.purdue.symmetria.evaluate.MHEScheme
 ```
 
+To run "Packed Paillier" which packs 21 plaintexts in a single ciphertext using the packing method described in the paper "T. Ge and S. Zdonik. Answering aggregation queries in system model, VLDB'07" you can run:
+
+```bash
+java -cp target/symmetria-0.1-SNAPSHOT.jar edu.purdue.symmetria.evaluate.PackedScheme
+```
+
 ## Contact
 If you want to know more about our project or have questions, please contact
 Savvas <savvas@purdue.edu>.

@@ -74,6 +74,43 @@ public class Paillier extends AsymPHE<BigInteger> {
         return gm.multiply(rn).mod(n2);
     }
 
+    // adds 32 bits of padding before each number. This allows for a total of 21 messages per packed message.
+    private BigInteger pack(long[] messages) {
+        BigInteger packedMessage = BigInteger.ZERO;
+        BigInteger shift = BigInteger.valueOf(2).multiply(BigInteger.valueOf(95 /*64 + 21*/));
+        for (long m : messages) {
+            packedMessage = packedMessage.multiply(shift);
+            packedMessage = packedMessage.add(BigInteger.valueOf(m));
+        }
+        return packedMessage;
+    }
+
+    // assume there are exactly 21 items in packed message.
+    private long[] unpack(BigInteger packedMessage) {
+        long[] messages = new long[21];
+        BigInteger shift = BigInteger.valueOf(2).multiply(BigInteger.valueOf(95 /* 64 + 21 */));
+        for (int i = 0; i < 21; i++) {
+            BigInteger message = packedMessage.mod(shift);
+            messages[i] = message.longValue(); // assume no overflow
+            packedMessage = packedMessage.divide(shift);
+        }
+        return messages;
+    }
+
+    public BigInteger encryptPacked(long[] messages) {
+        BigInteger rn = preRand;
+        if (ENABLE_RANDOM)
+            rn = new BigInteger(BITLENGTH, RNG).modPow(n, n2);
+        BigInteger packedMessage = pack(messages);
+        BigInteger gm = g.modPow(packedMessage, n2);
+        return gm.multiply(rn).mod(n2);
+    }
+
+    public long[] decryptPacked(BigInteger c) {
+        BigInteger m = c.modPow(lambda, n2).subtract(BigInteger.ONE).divide(n).multiply(mu).mod(n);
+        return unpack(m);
+    }
+
     @Override
     public long decrypt(BigInteger c) {
         BigInteger m = c.modPow(lambda, n2).subtract(BigInteger.ONE).divide(n).multiply(mu).mod(n);
@@ -86,6 +123,10 @@ public class Paillier extends AsymPHE<BigInteger> {
 
     public BigInteger addPlaintext(BigInteger c, long m) {
         return c.multiply(g.modPow(BigInteger.valueOf(m), n2)).mod(n2);
+    }
+
+    public BigInteger addPlaintextPacked(BigInteger c, long[] m) {
+        return c.multiply(g.modPow(pack(m), n2)).mod(n2);
     }
 
     public BigInteger subtract(BigInteger c1, BigInteger c2) {

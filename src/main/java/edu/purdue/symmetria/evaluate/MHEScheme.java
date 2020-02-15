@@ -9,7 +9,7 @@ import edu.purdue.symmetria.utils.MathUtils;
 public class MHEScheme {
 
     private static final int WARMUP = 10;
-    private static final int ITERATIONS = 100 + WARMUP;
+    private static final int ITERATIONS = 100;
 
     private static SymMHE symMHE = new SymMHE();
     private static ElGamal elgamal = new ElGamal();
@@ -25,7 +25,7 @@ public class MHEScheme {
         long startTime;
         long symMHETime = 0;
         long elgamalTime = 0;
-        for (int i = 0; i < ITERATIONS; i++) {
+        for (int i = 0; i < ITERATIONS + WARMUP; i++) {
 
             long m1 = MathUtils.randLong(1_000_000);
             long m2 = MathUtils.randLong(1_000_000);
@@ -41,7 +41,6 @@ public class MHEScheme {
                     }
                 }
             }
-
 
             SymCipher c_mhe1 = symMHE.encrypt(m1);
             SymCipher c_mhe2 = symMHE.encrypt(m2);
@@ -140,8 +139,8 @@ public class MHEScheme {
             }
         }
 
-        symMHETime = symMHETime / (ITERATIONS - WARMUP);
-        elgamalTime = elgamalTime / (ITERATIONS - WARMUP);
+        symMHETime = symMHETime / ITERATIONS;
+        elgamalTime = elgamalTime / ITERATIONS;
 
         System.out.println("symMHE\tElGamal");
         System.out.println(symMHETime + "\t" + elgamalTime);
