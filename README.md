@@ -12,9 +12,9 @@ to smaller ciphertext size overheads and faster execution times for encryption, 
 This repository contains a proof-of-concept implementation of the encryption schemes SAHE and SMHE and comparisons against Paillier and ElGamal. More details about these schemes and the _symmetria_ system can be found in out VLDB'20 paper:
 
 Savvas Savvides, Darshika Khandelwal, Patrick Eugster
-[SEfficient Confidentiality-Preserving Data Analytics over
+[Efficient Confidentiality-Preserving Data Analytics over
 Symmetrically Encrypted Datasets](https://dl.acm.org/doi/abs/10.14778/3389133.3389144)
-VLDB'20
+46th International Conference on Very Large Data Bases (VLDB'20)
 
 
 ## Installation
