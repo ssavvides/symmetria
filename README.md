@@ -2,12 +2,20 @@
 <img src="resources/logo/logo-name.png" alt="Symmetria" width="600">
 
 The _symmetria_ system introduces two _symmetric encryption_ schemes namely
-**SAHE (symmetric Additive Homomorphic Encryption)** and
-**SMHE (symmetric Multiplicative Homomorphic Encryption)**
+**SAHE (Symmetric Additive Homomorphic Encryption)** and
+**SMHE (Symmetric Multiplicative Homomorphic Encryption)**
 that allow additions and multiplications over encrypted data.
 
 These schemes can replace previous asymmetric PHE schemes such as Paillier or ElGamal. _symmetria_ leads
-to smaller ciphertext size overheads and faster execution times for homomorphic operations.
+to smaller ciphertext size overheads and faster execution times for encryption, decryption and homomorphic operations.
+
+This repository contains a proof-of-concept implementation of the encryption schemes SAHE and SMHE and comparisons against Paillier and ElGamal. More details about these schemes and the _symmetria_ system can be found in out VLDB'20 paper:
+
+Savvas Savvides, Darshika Khandelwal, Patrick Eugster
+[SEfficient Confidentiality-Preserving Data Analytics over
+Symmetrically Encrypted Datasets](https://dl.acm.org/doi/abs/10.14778/3389133.3389144)
+VLDB'20
+
 
 ## Installation
 
