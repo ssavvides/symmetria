@@ -83,7 +83,7 @@ public class SymAHE extends SymPHE {
     }
 
     public SymCipher negate(SymCipher c) {
-        return this.multiply(c, -1l);
+        return this.multiply(c, -1L);
     }
 
     @Override

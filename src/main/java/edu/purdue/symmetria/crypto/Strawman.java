@@ -18,8 +18,8 @@ public class Strawman extends CryptoScheme {
     private static final String CHARSET_NAME = "UTF-8";
 
     private static final String ALGORITHM = "AES";
-    private Cipher cipherEncrypt;
-    private Cipher cipherDecrypt;
+    private final Cipher cipherEncrypt;
+    private final Cipher cipherDecrypt;
 
     public Strawman() {
         this(DEFAULT_KEY_PATH);

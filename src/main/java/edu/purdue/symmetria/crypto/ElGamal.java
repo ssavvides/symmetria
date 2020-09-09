@@ -12,11 +12,11 @@ public class ElGamal extends AsymPHE<ElGamalCipher> {
     private static final String DEFAULT_PUBLIC_KEY_PATH = "/tmp/elgamal.pk";
     private static final String DEFAULT_PRIVATE_KEY_PATH = "/tmp/elgamal.sk";
 
-    private BigInteger g;
-    private BigInteger h;
-    private BigInteger x; // private key
+    private final BigInteger g;
+    private final BigInteger h;
+    private final BigInteger x; // private key
 
-    // precomputation
+    // pre-computation
     private BigInteger preC1;
     private BigInteger preS;
 
@@ -105,7 +105,7 @@ public class ElGamal extends AsymPHE<ElGamalCipher> {
     }
 
     public ElGamalCipher inverse(ElGamalCipher c) {
-        return pow(c, -1l);
+        return pow(c, -1L);
     }
 
     @Override

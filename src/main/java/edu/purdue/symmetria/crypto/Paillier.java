@@ -11,10 +11,10 @@ public class Paillier extends AsymPHE<BigInteger> {
     private static final String DEFAULT_PRIVATE_KEY_PATH = "/tmp/paillier.sk";
 
     // load keys
-    private BigInteger n2; // n squared
-    private BigInteger g;
-    private BigInteger mu;
-    private BigInteger lambda; // private key
+    private final BigInteger n2; // n squared
+    private final BigInteger g;
+    private final BigInteger mu;
+    private final BigInteger lambda; // private key
 
     // precomputed random
     private BigInteger preRand;

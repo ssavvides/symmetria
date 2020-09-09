@@ -12,8 +12,8 @@ public class AHEScheme {
     private static final int WARMUP = 10;
     private static final int ITERATIONS = 100;
 
-    private static SymAHE symAHE = new SymAHE();
-    private static Paillier paillier = new Paillier();
+    private static final SymAHE symAHE = new SymAHE();
+    private static final Paillier paillier = new Paillier();
 
     public enum AHEOp {
         ENCRYPT, DECRYPT, ADD, ADD_PLAINTEXT, SUBTRACT, MULTIPLY, NEGATE
@@ -129,7 +129,7 @@ public class AHEScheme {
         symAHETime = symAHETime / ITERATIONS ;
         paillierTime = paillierTime / ITERATIONS ;
 
-        System.out.println("SymAHE\tPaillier");
+        System.out.println("SymAHE\tPaillier (nanoseconds)");
         System.out.println(symAHETime + "\t" + paillierTime);
     }
 

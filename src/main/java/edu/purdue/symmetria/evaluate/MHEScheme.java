@@ -11,8 +11,8 @@ public class MHEScheme {
     private static final int WARMUP = 10;
     private static final int ITERATIONS = 100;
 
-    private static SymMHE symMHE = new SymMHE();
-    private static ElGamal elgamal = new ElGamal();
+    private static final SymMHE symMHE = new SymMHE();
+    private static final ElGamal elgamal = new ElGamal();
 
     public enum MHEOp {
         ENCRYPT, DECRYPT, MULTIPLY, MULTIPLY_PLAINTEXT, DIVIDE, POW, INVERSE
@@ -142,7 +142,7 @@ public class MHEScheme {
         symMHETime = symMHETime / ITERATIONS;
         elgamalTime = elgamalTime / ITERATIONS;
 
-        System.out.println("symMHE\tElGamal");
+        System.out.println("symMHE\tElGamal (nanoseconds)");
         System.out.println(symMHETime + "\t" + elgamalTime);
     }
 

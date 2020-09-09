@@ -11,20 +11,19 @@ import java.math.BigInteger;
 
 
 public class Sum {
-    private static int ITERATIONS = 10_000;
-
+    private final static int ITERATIONS = 10_000;
 
     private static void timeSum() {
 
         // print headers
         System.out.println("Count\tSelectivity"
                 + "\tSymAHE(time)\tStrawman(time)\tPaillier(time)"
-                + "\tSymAHE(size)\tStrawman(size)\tPaillier(size)");
+                + "\tSymAHE(size)\tStrawman(size)\tPaillier(size) (times in nanoseconds and sizes in bytes)");
 
         int selectivity = 1;
         while (selectivity <= 100) {
 
-            SymAHE symAHE = new SymAHE();
+            SymAHE symAHE = new SymAHE(SymCipher.CipherType.RANGE);
             Paillier paillier = new Paillier();
             Strawman strawman = new Strawman();
 

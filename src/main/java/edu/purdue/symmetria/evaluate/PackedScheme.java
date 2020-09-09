@@ -11,7 +11,7 @@ public class PackedScheme {
     private static final int ITERATIONS = 100;
     private static final int PACKED_LENGTH = 21;
 
-    private static Paillier paillier = new Paillier();
+    private static final Paillier paillier = new Paillier();
 
     public enum AHEOp {
         ENCRYPT, DECRYPT, ADD, ADD_PLAINTEXT
@@ -19,7 +19,7 @@ public class PackedScheme {
 
     private static void timeOp(AHEOp op) {
 
-        System.out.println("\nEvaluating " + op.name() + " ...");
+        System.out.println("\nEvaluating " + op.name() + " ... (nanoseconds)");
 
         long startTime;
         long paillierTime = 0;

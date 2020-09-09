@@ -5,7 +5,7 @@ import java.nio.ByteBuffer;
 import java.util.Base64;
 
 public class ByteUtils {
-    private static ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
+    private static final ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
     private static final Base64.Encoder ENCODER = Base64.getEncoder();
     private static final Base64.Decoder DECODER = Base64.getDecoder();
 
@@ -46,7 +46,7 @@ public class ByteUtils {
      */
     public static byte[] serialize(Object obj) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ObjectOutputStream os = null;
+        ObjectOutputStream os;
         try {
             os = new ObjectOutputStream(out);
             os.writeObject(obj);

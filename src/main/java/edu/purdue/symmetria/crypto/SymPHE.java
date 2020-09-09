@@ -4,6 +4,8 @@ import edu.purdue.symmetria.crypto.cipher.ArraySymCipher;
 import edu.purdue.symmetria.crypto.cipher.RangeSymCipher;
 import edu.purdue.symmetria.crypto.cipher.SymCipher;
 import edu.purdue.symmetria.crypto.cipher.SymCipher.CipherType;
+import edu.purdue.symmetria.utils.ByteUtils;
+import edu.purdue.symmetria.utils.MathUtils;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -80,14 +82,13 @@ public abstract class SymPHE extends CryptoScheme {
      * number generator.
      */
     public long getRandNum(long id, long modulo) {
-        return 1;
-//        byte[] b = new byte[0];
-//        try {
-//            b = aesBlockCipher.doFinal(String.valueOf(id).getBytes());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return MathUtils.mod(ByteUtils.bytesToLong(b), modulo);
+        byte[] b = new byte[0];
+        try {
+            b = aesBlockCipher.doFinal(String.valueOf(id).getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return MathUtils.mod(ByteUtils.bytesToLong(b), modulo);
     }
 
 
